@@ -69,7 +69,7 @@
         <!-- Sign Up -->
         <button type="submit"
           class="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 rounded-xl shadow-md transition transform hover:scale-105">
-           Sign Up
+           Submit
         </button>
 
         <a href="<?= site_url('/'); ?>" 
