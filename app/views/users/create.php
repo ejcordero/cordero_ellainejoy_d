@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CRUDero Create User</title>
+  <title>Create User</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Background animation */
@@ -32,7 +32,7 @@
     
     <!-- Title -->
     <h1 class="text-4xl font-extrabold text-center mb-8 text-white tracking-wide drop-shadow-lg">
-      🚀 Create User
+      CRUDero Create User
     </h1>
 
     <!-- Form -->

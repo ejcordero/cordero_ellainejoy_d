@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MINSU Students Info</title>
+  <title>CRUDero Pagination</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Animated gradient background */
