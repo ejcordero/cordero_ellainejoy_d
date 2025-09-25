@@ -68,40 +68,43 @@
       </form>
     </header>
 
-    <!-- Data Table -->
-    <div class="glass rounded-2xl shadow-xl overflow-hidden">
-      <table class="min-w-full border-collapse">
-        <thead class="bg-emerald-600/90">
-          <tr>
-            <th class="px-6 py-3 text-left text-sm font-bold text-white uppercase tracking-wider">ID</th>
-            <th class="px-6 py-3 text-left text-sm font-bold text-white uppercase tracking-wider">Name</th>
-            <th class="px-6 py-3 text-left text-sm font-bold text-white uppercase tracking-wider">Email</th>
-            <th class="px-6 py-3 text-left text-sm font-bold text-white uppercase tracking-wider">Action</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-white/20">
-          <?php foreach (html_escape($user) as $users): ?>
-          <tr class="hover:bg-emerald-500/30 transition">
-            <td class="px-6 py-4"><?=$users['id']; ?></td>
-            <td class="px-6 py-4 font-medium"><?=$users['username']; ?></td>
-            <td class="px-6 py-4"><?=$users['email']; ?></td>
-            <td class="px-6 py-4 space-x-2">
-              <a href="<?=site_url('/users/update/'.$users['id']);?>"
-                 class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2
-                        rounded-lg text-sm font-semibold shadow transition">
-                 Update
-              </a>
-              <a href="<?=site_url('/users/delete/'.$users['id']);?>"
-                 class="inline-block bg-red-500 hover:bg-red-600 text-white px-4 py-2
-                        rounded-lg text-sm font-semibold shadow transition">
-                 Delete
-              </a>
-            </td>
-          </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
-    </div>
+   <!-- Data Table -->
+<div class="glass rounded-2xl shadow-xl overflow-hidden">
+  <table class="min-w-full border-collapse">
+    <thead class="bg-emerald-600/90">
+      <tr>
+        <th class="px-6 py-3 text-left text-sm font-bold text-white uppercase tracking-wider">ID</th>
+        <th class="px-6 py-3 text-left text-sm font-bold text-white uppercase tracking-wider">Last Name</th>
+        <th class="px-6 py-3 text-left text-sm font-bold text-white uppercase tracking-wider">First Name</th>
+        <th class="px-6 py-3 text-left text-sm font-bold text-white uppercase tracking-wider">Email</th>
+        <th class="px-6 py-3 text-left text-sm font-bold text-white uppercase tracking-wider">Action</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-white/20">
+      <?php foreach (html_escape($user) as $users): ?>
+      <tr class="hover:bg-emerald-500/30 transition">
+        <td class="px-6 py-4"><?=$users['id']; ?></td>
+        <td class="px-6 py-4 font-medium"><?=$users['lastname']; ?></td>
+        <td class="px-6 py-4"><?=$users['firstname']; ?></td>
+        <td class="px-6 py-4"><?=$users['email']; ?></td>
+        <td class="px-6 py-4 space-x-2">
+          <a href="<?=site_url('/users/update/'.$users['id']);?>"
+             class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2
+                    rounded-lg text-sm font-semibold shadow transition">
+             Update
+          </a>
+          <a href="<?=site_url('/users/delete/'.$users['id']);?>"
+             class="inline-block bg-red-500 hover:bg-red-600 text-white px-4 py-2
+                    rounded-lg text-sm font-semibold shadow transition">
+             Delete
+          </a>
+        </td>
+      </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</div>
+
 
     <!-- Pagination + Create Button Row -->
     <div class="mt-8 flex items-center justify-between">

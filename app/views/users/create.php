@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create User</title>
+  <title>CRUDero Create User</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Background animation */
@@ -38,18 +38,31 @@
     <!-- Form -->
     <form action="<?= site_url('users/create'); ?>" method="POST" class="space-y-6">
       
-      <!-- Username -->
-      <div>
-        <label for="username" class="block text-white font-semibold mb-2">Username</label>
-        <input 
-          type="text" 
-          id="username" 
-          name="username" 
-          placeholder="Enter username"
-          required
-          class="w-full px-4 py-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:ring-2 focus:ring-indigo-400"
-        >
-      </div>
+      <!-- Last Name -->
+<div>
+  <label for="lastname" class="block text-white font-semibold mb-2">Last Name</label>
+  <input 
+    type="text" 
+    id="lastname" 
+    name="lastname" 
+    placeholder="Enter last name"
+    required
+    class="w-full px-4 py-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+  >
+</div>
+
+<!-- First Name -->
+<div>
+  <label for="firstname" class="block text-white font-semibold mb-2">First Name</label>
+  <input 
+    type="text" 
+    id="firstname" 
+    name="firstname" 
+    placeholder="Enter first name"
+    required
+    class="w-full px-4 py-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+  >
+</div>
 
       <!-- Email -->
       <div>

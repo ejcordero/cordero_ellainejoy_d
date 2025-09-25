@@ -45,58 +45,58 @@ class UsersController extends Controller {
         $this->call->view('users/index', $data);
     }
     
-   public function create()
-   {
-        if($this->io->method()== 'post')
-            {
-            $username = $this->io->post('username');
-            $email = $this->io->post('email');
-
-        $data = array(
-            'username' => $username,
-            'email' => $email,
-        );
-
-       if ($this->UsersModel->insert($data)) {
-            redirect();
-       } else {
-         echo "Error";
-       }
-    } else {
-            $this->call->view('users/create');
-        }        
-    }
-
-    function update($id)
+    public function create()
     {
-        $user = $this-> UsersModel->find($id);
-    if(!$user)
-    {
-        echo "User not found";
-        return;
-    }
-        if($this->io->method()=='post')
-        {
-            $username = $this->io->post('username');
+        if($this->io->method()== 'post') {
+            $lastname = $this->io->post('lastname');
+            $firstname = $this->io->post('firstname');
             $email = $this->io->post('email');
-
-            $data=array('username' => $username,
-            'email' => $email);
-
-            if($this->UsersModel->update($id, $data))
-            {
+    
+            $data = array(
+                'lastname' => $lastname,
+                'firstname' => $firstname,
+                'email' => $email,
+            );
+    
+            if ($this->UsersModel->insert($data)) {
                 redirect();
+            } else {
+                echo "Error";
             }
-            else {
+        } else {
+            $this->call->view('users/create');
+        }
+    }
+    
+    public function update($id)
+    {
+        $user = $this->UsersModel->find($id);
+        if(!$user) {
+            echo "User not found";
+            return;
+        }
+        if($this->io->method()=='post') {
+            $lastname = $this->io->post('lastname');
+            $firstname = $this->io->post('firstname');
+            $email = $this->io->post('email');
+    
+            $data = array(
+                'lastname' => $lastname,
+                'firstname' => $firstname,
+                'email' => $email
+            );
+    
+            if($this->UsersModel->update($id, $data)) {
+                redirect();
+            } else {
                 echo "error updating";
             }
-        }
-        else
-        {
+        } else {
             $data['user'] = $user;
             $this->call->view('users/update', $data);
         }
     }
+    
 
     function delete($id)
     {
