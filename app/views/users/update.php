@@ -89,7 +89,7 @@
         </button>
 
         <!-- Cancel -->
-        <a href="<?= site_url('/'); ?>" 
+        <a href="<?= site_url('/index'); ?>" 
            class="flex-1 text-center bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-xl shadow-md transition transform hover:scale-105">
            Cancel
         </a>
