@@ -52,3 +52,7 @@ $router->get('/users/delete/{id}', 'UsersController::delete');
 
 $router->match('/login', 'LoginController::index', ['GET', 'POST']);
 $router->get('/logout', 'LoginController::logout');
+
+$router->match('/signup/process', 'SignupController::process', ['POST']);
+
+$router->match('/signup', 'SignupController::index', ['GET', 'POST']);

@@ -38,6 +38,10 @@
 
     <form action="<?= site_url('login'); ?>" method="POST" class="space-y-6">
 
+    <?php if(isset($error)): ?>
+  <p class="text-red-500 text-sm mb-4 text-center"><?= $error ?></p>
+<?php endif; ?>
+
       <!-- Email -->
       <div>
         <label for="email" class="block text-white font-semibold mb-2">Email Address</label>
