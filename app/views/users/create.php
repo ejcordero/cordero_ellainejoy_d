@@ -36,7 +36,7 @@
     </h1>
 
     <!-- Form -->
-    <form action="<?= site_url('users/create'); ?>" method="POST" class="space-y-6">
+    <form action="<?= site_url('index.php/users/create'); ?>" method="POST" class="space-y-6">
       
       <!-- Last Name -->
 <div>
