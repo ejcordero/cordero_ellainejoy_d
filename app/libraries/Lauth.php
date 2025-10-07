@@ -71,24 +71,25 @@ class Lauth {
 	 * @return $this
 	 */
 	public function register($username, $email, $password, $email_token)
-	{
-		$this->LAVA->db->transaction();
-		$data = array(
-			'username' => $username,
-			'password' => $this->passwordhash($password),
-			'email' => $email,
-			'email_token' => $email_token
-		);
+{
+	$this->LAVA->db->transaction();
+	$data = array(
+		'username' => $username,
+		'password' => $this->passwordhash($password),
+		'email' => $email,
+		'email_token' => $email_token
+	);
 
-		$res = $this->LAVA->db->table('users')->insert($data);
-		if($res) {
-			$this->LAVA->db->commit();
-			return $this->LAVA->db->last_id();
-		} else {
-			$this->LAVA->db->roll_back();
-			return false;
-		}
+	$res = $this->LAVA->db->table('users')->insert($data);
+	if ($res) {
+		$this->LAVA->db->commit();
+		return $this;  // Return instance of Lauth
+	} else {
+		$this->LAVA->db->roll_back();
+		return $this;  // Even on failure
 	}
+}
+
 
 	/**
 	 * Login
@@ -97,19 +98,23 @@ class Lauth {
 	 * @return string Validated Username
 	 */
 	public function login($email, $password)
-	{				
-    	$row = $this->LAVA->db
+{				
+    $row = $this->LAVA->db
     					->table('users') 					
     					->where('email', $email)
     					->get();
-		if($row) {
-			if(password_verify($password, $row['password'])) {
-					return $row['id'];
-			} else {
-				return false;
-			}
-		}
-	}
+    if ($row) {
+        if (password_verify($password, $row['password'])) {
+            return $row['id'];
+        } else {
+            return false;
+        }
+    }
+
+    // Add this fallback
+    return false;
+}
+
 
 	/**
 	 * Change Password
@@ -149,24 +154,30 @@ class Lauth {
 	 * @return bool TRUE is logged in
 	 */
 	public function is_logged_in()
-	{
-		$data = array(
-			'user_id' => $this->LAVA->session->userdata('user_id'),
-			'browser' => $_SERVER['HTTP_USER_AGENT'],
-			'session_data' => $this->LAVA->session->userdata('session_data')
-		);
-		$count = $this->LAVA->db->table('sessions')
-						->select_count('session_id', 'count')
-						->where($data)
-						->get()['count'];
-		if($this->LAVA->session->userdata('logged_in') == 1 && $count > 0) {
-			return true;
-		} else {
-			if($this->LAVA->session->has_userdata('user_id')) {
-				$this->set_logged_out();
-			}
-		}
-	}
+{
+    $data = array(
+        'user_id' => $this->LAVA->session->userdata('user_id'),
+        'browser' => $_SERVER['HTTP_USER_AGENT'],
+        'session_data' => $this->LAVA->session->userdata('session_data')
+    );
+
+    $count = $this->LAVA->db->table('sessions')
+                    ->select_count('session_id', 'count')
+                    ->where($data)
+                    ->get()['count'];
+
+    if ($this->LAVA->session->userdata('logged_in') == 1 && $count > 0) {
+        return true;
+    } else {
+        if ($this->LAVA->session->has_userdata('user_id')) {
+            $this->set_logged_out();
+        }
+    }
+
+    // Add this fallback
+    return false;
+}
+
 
 	/**
 	 * Get User ID
@@ -183,17 +194,20 @@ class Lauth {
 	 * @return string Username from Session
 	 */
 	public function get_username($user_id)
-	{
-		$row = $this->LAVA->db
-						->table('users')
-						->select('username')					
-    					->where('id', $user_id)
-    					->limit(1)
-    					->get();
-    	if($row) {
-    		return $row['username'];
-    	}
+{
+	$row = $this->LAVA->db
+					->table('users')
+					->select('username')					
+    				->where('id', $user_id)
+    				->limit(1)
+    				->get();
+	if($row) {
+		return $row['username'];
 	}
+
+	return null; // Or return '', false, etc. depending on usage
+}
+
 
 	public function set_logged_out() {
 		$data = array(
