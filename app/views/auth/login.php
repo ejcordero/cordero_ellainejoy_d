@@ -74,8 +74,8 @@
           Login
         </button>
 
-        <a href="<?= site_url('users/create'); ?>"
-           class="text-center w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl
+        <a href="/users/create"
+          class="text-center w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl
                   shadow-md transition transform hover:scale-105">
           Create Account
         </a>
