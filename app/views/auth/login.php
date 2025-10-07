@@ -78,7 +78,7 @@
           Login
         </button>
 
-        <a href="<?= site_url('index.php/users/create'); ?>"
+        <a href="<?= site_url('index.php/signup'); ?>"
    class="text-center w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl
           shadow-md transition transform hover:scale-105">
   Create Account
