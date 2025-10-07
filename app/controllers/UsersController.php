@@ -65,7 +65,7 @@ class UsersController extends Controller {
             );
     
             if ($this->UsersModel->insert($data)) {
-                redirect();
+                redirect('/index');
             } else {
                 echo "Error";
             }
